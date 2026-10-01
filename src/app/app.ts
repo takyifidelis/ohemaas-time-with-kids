@@ -1,12 +1,26 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { SiteHeaderComponent } from './components/site-header/site-header';
+import { HeroSectionComponent } from './components/hero-section/hero-section';
+import { BenefitsStripComponent } from './components/benefits-strip/benefits-strip';
+import { ActivitiesSectionComponent } from './components/activities-section/activities-section';
+import { AboutSectionComponent } from './components/about-section/about-section';
+import { ContactSectionComponent } from './components/contact-section/contact-section';
+import { SiteFooterComponent } from './components/site-footer/site-footer';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.scss',
+  imports: [
+    SiteHeaderComponent,
+    HeroSectionComponent,
+    BenefitsStripComponent,
+    ActivitiesSectionComponent,
+    AboutSectionComponent,
+    ContactSectionComponent,
+    SiteFooterComponent
+  ],
   templateUrl: './app.html',
+  styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('ohemaas-time-with-kids');
+  title = "Ohemaa’s Time With Kids";
 }

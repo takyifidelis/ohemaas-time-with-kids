@@ -1,0 +1,194 @@
+<header class="header-inner" [class.compact]="isScrolled()">
+  <div class="container header-container">
+    <!-- Brand Logo -->
+    <a
+      href="#home"
+      class="brand-link"
+      (click)="scrollToSection($event, 'home')"
+      aria-label="Ohemaa’s Time With Kids — Home"
+    >
+      <div class="logo-badge">
+        <img
+          ngSrc="/images/ohemaa-logo.webp"
+          alt="Ohemaa’s Time With Kids Logo"
+          width="54"
+          height="54"
+          priority
+        />
+      </div>
+      <span class="brand-text">{{ siteData.brandName }}</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        @for (item of siteData.navLinks; track item.fragment) {
+          <li class="nav-item">
+            <a
+              [href]="item.href"
+              class="nav-link"
+              [class.active]="item.fragment === 'home'"
+              (click)="scrollToSection($event, item.fragment)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <a
+        href="#contact"
+        class="btn btn-primary enquire-btn"
+        (click)="scrollToSection($event, 'contact')"
+      >
+        <span>Enquire Now</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        type="button"
+        class="mobile-menu-toggle"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-controls="mobile-nav-dialog"
+        [attr.aria-label]="isMobileMenuOpen() ? 'Close menu' : 'Open navigation menu'"
+        (click)="toggleMobileMenu()"
+      >
+        @if (isMobileMenuOpen()) {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        } @else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer / Modal -->
+@if (isMobileMenuOpen()) {
+  <div
+    class="mobile-backdrop"
+    (click)="closeMobileMenu()"
+    aria-hidden="true"
+  ></div>
+  <div
+    id="mobile-nav-dialog"
+    class="mobile-nav-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile navigation"
+  >
+    <div class="drawer-header">
+      <div class="logo-badge">
+        <img
+          ngSrc="/images/ohemaa-logo.webp"
+          alt="Ohemaa’s Time With Kids Logo"
+          width="44"
+          height="44"
+        />
+      </div>
+      <button
+        type="button"
+        class="drawer-close-btn"
+        aria-label="Close navigation menu"
+        (click)="closeMobileMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-nav-body">
+      <ul class="mobile-nav-list">
+        @for (item of siteData.navLinks; track item.fragment) {
+          <li class="mobile-nav-item">
+            <a
+              [href]="item.href"
+              class="mobile-nav-link"
+              (click)="scrollToSection($event, item.fragment)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="mobile-nav-cta">
+        <a
+          href="#contact"
+          class="btn btn-primary"
+          style="width: 100%"
+          (click)="scrollToSection($event, 'contact')"
+        >
+          <span>Enquire Now</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+
+        <div class="mobile-contact-info">
+          <p class="location-text">📍 {{ siteData.location }}</p>
+          <a [href]="siteData.phoneLink" class="direct-contact-link">
+            📞 {{ siteData.phoneDisplay }}
+          </a>
+          <a [href]="siteData.emailLink" class="direct-contact-link">
+            ✉️ {{ siteData.email }}
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+}

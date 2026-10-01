@@ -1,0 +1,14 @@
+<section id="activities" class="activities-section" aria-labelledby="activities-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="activities-heading" class="section-title">{{ siteData.activitiesHeading }}</h2>
+      <div class="section-accent-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="activities-grid">
+      @for (item of siteData.activities; track item.id) {
+        <app-activity-card [item]="item" />
+      }
+    </div>
+  </div>
+</section>

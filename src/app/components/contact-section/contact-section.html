@@ -1,0 +1,221 @@
+<section id="contact" class="contact-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <!-- Top Contact Bar (Matches Mockup Reference) -->
+    <div class="contact-highlight-bar">
+      <div class="highlight-title-group">
+        <div class="speech-icon-wrapper" aria-hidden="true">
+          <!-- Chat / Speech Bubble SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.444 1.223z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h2 id="contact-heading" class="highlight-heading">
+          {{ siteData.contact.heading }}
+        </h2>
+      </div>
+
+      <div class="highlight-divider" aria-hidden="true"></div>
+
+      <div class="highlight-contact-links">
+        <a [href]="siteData.phoneLink" class="contact-pill-link" aria-label="Call Ohemaa’s Time With Kids at 0550794321">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48 1.01a11.042 11.042 0 005.516 5.516c.455.163.893-.07 1.01-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+          </svg>
+          <span class="contact-val">{{ siteData.phoneDisplay }}</span>
+        </a>
+
+        <a [href]="siteData.emailLink" class="contact-pill-link" aria-label="Email Ohemaa’s Time With Kids at ohemaastimewithkids@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+          </svg>
+          <span class="contact-val">{{ siteData.email }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Detailed Contact Cards & Enquiry Composer -->
+    <div class="contact-details-grid">
+      <!-- Left Column: Direct Info & Location -->
+      <div class="contact-info-panel">
+        <h3 class="panel-title">Direct Contact Information</h3>
+        <p class="panel-desc">{{ siteData.contact.subheading }}</p>
+
+        <ul class="info-list">
+          <li class="info-item">
+            <div class="info-icon" aria-hidden="true">📍</div>
+            <div class="info-text">
+              <span class="info-label">Location</span>
+              <span class="info-value">{{ siteData.location }}</span>
+            </div>
+          </li>
+
+          <li class="info-item">
+            <div class="info-icon" aria-hidden="true">📞</div>
+            <div class="info-text">
+              <span class="info-label">Phone</span>
+              <a [href]="siteData.phoneLink" class="info-value-link">{{ siteData.phoneDisplay }}</a>
+            </div>
+          </li>
+
+          <li class="info-item">
+            <div class="info-icon" aria-hidden="true">✉️</div>
+            <div class="info-text">
+              <span class="info-label">Email</span>
+              <a [href]="siteData.emailLink" class="info-value-link">{{ siteData.email }}</a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="info-actions">
+          <a [href]="siteData.phoneLink" class="btn btn-primary">
+            <span>{{ siteData.contact.callToAction }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48 1.01a11.042 11.042 0 005.516 5.516c.455.163.893-.07 1.01-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+            </svg>
+          </a>
+
+          <button
+            type="button"
+            class="btn btn-secondary-glass copy-btn"
+            (click)="copyEmailToClipboard()"
+            [attr.aria-label]="isCopied() ? 'Email copied' : 'Copy email address to clipboard'"
+          >
+            <span>{{ isCopied() ? 'Copied!' : 'Copy Email' }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12a1.5 1.5 0 01.439 1.061V16.5A1.5 1.5 0 0115.5 18h-7A1.5 1.5 0 017 16.5v-13z" />
+              <path d="M4 6.5A1.5 1.5 0 015.5 5h1a.75.75 0 000-1.5h-1A3 3 0 002.5 6.5v10A3 3 0 005.5 19.5h7a3 3 0 003-3v-1a.75.75 0 00-1.5 0v1A1.5 1.5 0 0112.5 18h-7A1.5 1.5 0 014 16.5v-10z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="sr-only" role="status" aria-live="polite">
+          {{ copyFeedbackMessage() }}
+        </div>
+      </div>
+
+      <!-- Right Column: Enquiry Composer -->
+      <div class="composer-card">
+        <h3 class="composer-title">{{ siteData.contact.formHeading }}</h3>
+        <p class="composer-notice" id="form-notice">
+          {{ siteData.contact.formNotice }}
+        </p>
+
+        <form
+          [formGroup]="enquiryForm"
+          (ngSubmit)="onFormSubmit()"
+          class="enquiry-form"
+          novalidate
+          aria-describedby="form-notice"
+        >
+          <!-- Parent / Guardian Name -->
+          <div class="form-group">
+            <label for="enquiry-name" class="form-label">
+              Parent / Guardian Name <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="enquiry-name"
+              type="text"
+              formControlName="parentName"
+              class="form-input"
+              [class.has-error]="f.parentName.touched && f.parentName.invalid"
+              placeholder="Your full name"
+              autocomplete="name"
+              [attr.aria-invalid]="f.parentName.touched && f.parentName.invalid"
+              aria-describedby="name-error"
+            />
+            @if (f.parentName.touched && f.parentName.invalid) {
+              <p id="name-error" class="error-msg" role="alert">
+                Please enter your name (at least 2 characters).
+              </p>
+            }
+          </div>
+
+          <!-- Reply Email -->
+          <div class="form-group">
+            <label for="enquiry-email" class="form-label">
+              Your Email Address <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="enquiry-email"
+              type="email"
+              formControlName="email"
+              class="form-input"
+              [class.has-error]="f.email.touched && f.email.invalid"
+              placeholder="you@example.com"
+              autocomplete="email"
+              [attr.aria-invalid]="f.email.touched && f.email.invalid"
+              aria-describedby="email-error"
+            />
+            @if (f.email.touched && f.email.invalid) {
+              <p id="email-error" class="error-msg" role="alert">
+                Please provide a valid email address.
+              </p>
+            }
+          </div>
+
+          <!-- Phone Number (Optional) -->
+          <div class="form-group">
+            <label for="enquiry-phone" class="form-label">
+              Phone Number <span class="optional-tag">(optional)</span>
+            </label>
+            <input
+              id="enquiry-phone"
+              type="tel"
+              formControlName="phone"
+              class="form-input"
+              placeholder="e.g. 0550794321"
+              autocomplete="tel"
+            />
+          </div>
+
+          <!-- Subject / Interest -->
+          <div class="form-group">
+            <label for="enquiry-subject" class="form-label">
+              Subject / Interest <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="enquiry-subject"
+              type="text"
+              formControlName="subject"
+              class="form-input"
+              placeholder="Childcare Enquiry"
+            />
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="enquiry-message" class="form-label">
+              Your Message <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="enquiry-message"
+              formControlName="message"
+              class="form-textarea"
+              [class.has-error]="f.message.touched && f.message.invalid"
+              rows="4"
+              placeholder="Tell us about your child's after-school childcare needs..."
+              [attr.aria-invalid]="f.message.touched && f.message.invalid"
+              aria-describedby="message-error"
+            ></textarea>
+            @if (f.message.touched && f.message.invalid) {
+              <p id="message-error" class="error-msg" role="alert">
+                Please enter a message (at least 10 characters).
+              </p>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary submit-btn">
+            <span>Open email app</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+              <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

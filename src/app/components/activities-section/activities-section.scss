@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  background-color: var(--color-cream);
+}
+
+.activities-section {
+  padding: clamp(3rem, 5vw, 4.5rem) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  color: var(--color-forest-deep);
+  letter-spacing: -0.02em;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

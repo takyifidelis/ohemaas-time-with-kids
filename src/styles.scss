@@ -1,1 +1,261 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   Global Styles & Theme Variables - Ohemaa's Time With Kids
+   ========================================================================== */
+
+/* Locally hosted Lexend variable font */
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/lexend-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/lexend-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* Brand Palette */
+  --color-forest: #063d2a;
+  --color-forest-deep: #03291d;
+  --color-forest-darker: #021a12;
+  --color-forest-light: #0d543b;
+  --color-cream: #fff8e8;
+  --color-cream-light: #fffdf7;
+  --color-cream-card: #fbf5e6;
+  --color-orange: #ff7900;
+  --color-orange-hover: #e66d00;
+  --color-orange-light: #fff0e0;
+  --color-purple: #7c2fc1;
+  --color-purple-hover: #6822a6;
+  --color-purple-light: #f5edfc;
+  --color-cyan: #13b9df;
+  --color-mint: #e8f8f0;
+  --color-mint-card: #e5f6ee;
+
+  /* Typography Colors */
+  --color-text-dark: #12281e;
+  --color-text-muted: #3d564b;
+  --color-text-light: #ffffff;
+  --color-text-light-muted: rgba(255, 255, 255, 0.85);
+
+  /* Elevation & Borders */
+  --shadow-sm: 0 2px 8px rgba(3, 41, 29, 0.06);
+  --shadow-md: 0 8px 24px rgba(3, 41, 29, 0.08);
+  --shadow-lg: 0 16px 36px rgba(3, 41, 29, 0.12);
+  --shadow-glow-orange: 0 8px 20px rgba(255, 121, 0, 0.3);
+  --border-subtle: rgba(6, 61, 42, 0.1);
+  --border-glass: rgba(255, 255, 255, 0.18);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Layout */
+  --container-max-width: 1280px;
+  --container-padding: clamp(1rem, 3.5vw, 2.5rem);
+  --header-height: 84px;
+
+  /* Fonts */
+  --font-family-base: 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  font-size: 16px;
+  background-color: var(--color-forest);
+  color: var(--color-text-dark);
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Accessibility: Skip to Content */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-orange);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+  box-shadow: var(--shadow-lg);
+
+  &:focus {
+    top: 1rem;
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+  }
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 3px;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+/* Common Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Visually Hidden Helper (Screen Readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Shared Button Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    transition: transform var(--transition-fast);
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-orange);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow-orange);
+
+  &:hover {
+    background-color: var(--color-orange-hover);
+    box-shadow: 0 10px 24px rgba(255, 121, 0, 0.4);
+  }
+}
+
+.btn-secondary-glass {
+  background: rgba(6, 61, 42, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid var(--border-glass);
+
+  &:hover {
+    background: rgba(6, 61, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.btn-outline-forest {
+  background-color: transparent;
+  color: var(--color-forest);
+  border: 2px solid var(--color-forest);
+
+  &:hover {
+    background-color: var(--color-forest);
+    color: #ffffff;
+  }
+}
+
+/* Section Header Accent */
+.section-accent-line {
+  width: 48px;
+  height: 4px;
+  background-color: var(--color-orange);
+  border-radius: var(--radius-pill);
+  margin: 0.75rem auto 0;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

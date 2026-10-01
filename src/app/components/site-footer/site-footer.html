@@ -1,0 +1,57 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-container">
+    <!-- Brand Info -->
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <div class="logo-badge">
+          <img
+            ngSrc="/images/ohemaa-logo.webp"
+            alt="Ohemaa’s Time With Kids Logo"
+            width="46"
+            height="46"
+          />
+        </div>
+        <span class="brand-name">{{ siteData.brandName }}</span>
+      </div>
+      <p class="footer-tagline">{{ siteData.tagline }}</p>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="footer-nav-col">
+      <h4 class="footer-heading">Navigation</h4>
+      <ul class="footer-nav-list">
+        @for (item of siteData.navLinks; track item.fragment) {
+          <li>
+            <a
+              [href]="item.href"
+              class="footer-nav-link"
+              (click)="scrollToSection($event, item.fragment)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-contact-col">
+      <h4 class="footer-heading">Contact</h4>
+      <p class="footer-contact-item">📍 {{ siteData.location }}</p>
+      <p class="footer-contact-item">
+        📞 <a [href]="siteData.phoneLink" class="footer-link">{{ siteData.phoneDisplay }}</a>
+      </p>
+      <p class="footer-contact-item">
+        ✉️ <a [href]="siteData.emailLink" class="footer-link">{{ siteData.email }}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="copyright-text">
+        &copy; {{ siteData.year }} {{ siteData.brandName }}. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

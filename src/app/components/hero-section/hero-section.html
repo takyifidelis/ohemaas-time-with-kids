@@ -1,0 +1,86 @@
+<section id="home" class="hero-section" aria-label="Hero Overview">
+  <!-- Hero Background Imagery -->
+  <div class="hero-backdrop" aria-hidden="true">
+    <picture>
+      <source srcset="/images/hero-garden.avif" type="image/avif" />
+      <source srcset="/images/hero-garden.webp" type="image/webp" />
+      <img
+        ngSrc="/images/hero-garden.png"
+        alt=""
+        class="hero-bg-img"
+        fill
+        priority
+      />
+    </picture>
+    <div class="hero-overlay-gradient"></div>
+  </div>
+
+  <div class="container hero-content-wrapper">
+    <div class="hero-grid">
+      <!-- Left Column: Copy & Actions -->
+      <div class="hero-text-block">
+        <div class="hero-eyebrow-wrapper">
+          <span class="hero-eyebrow">{{ siteData.hero.eyebrow }}</span>
+          <div class="eyebrow-accent" aria-hidden="true"></div>
+        </div>
+
+        <h1 class="hero-title">
+          A happy place<br />
+          to learn, play &amp; grow.
+        </h1>
+
+        <p class="hero-description">
+          Safe, caring after-school support for your child.<br />
+          Peace of mind for you.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="#contact"
+            class="btn btn-primary hero-btn-main"
+            (click)="scrollToSection($event, 'contact')"
+          >
+            <span>{{ siteData.hero.primaryCta }}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="#activities"
+            class="btn btn-secondary-glass hero-btn-sub"
+            (click)="scrollToSection($event, 'activities')"
+          >
+            <span>{{ siteData.hero.secondaryCta }}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Stage Anchor for Mobile/Responsive -->
+      <div class="hero-visual-stage" aria-hidden="true">
+        <!-- This space visually frames the characters in hero-garden.png -->
+      </div>
+    </div>
+  </div>
+</section>
